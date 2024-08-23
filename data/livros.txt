@@ -1,0 +1,3 @@
+ISBN1 Título1 Emprestado
+ISBN2 Título2 Disponível
+ISBN3 Título3 Emprestado

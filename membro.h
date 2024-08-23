@@ -30,6 +30,7 @@ public:
     void exibirDados() const;
     void adicionarLivroEmprestado(const Livro& livro);
     void removerLivroEmprestado(const string& ISBN);
+    
 };
 
 #endif // MEMBRO_H__

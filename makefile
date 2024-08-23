@@ -1,26 +1,36 @@
-# Nome do compilador
+# Variáveis de compilador e flags
 CXX = g++
+CXXFLAGS = -std=c++17 -Wall
 
-# Flags de compilação
-CXXFLAGS = -std=c++11 -Wall -g
-
-# Nome do executável
+# Diretivas de arquivos
 TARGET = main
+OBJECTS = main.o livro.o membro.o Biblioteca.o
+HEADERS = livro.h membro.h Biblioteca.h
 
-# Arquivos fonte
-SRCS = main.cpp Biblioteca.cpp Livro.cpp Membro.cpp
+# Regra padrão
+all: $(TARGET)
 
-# Arquivos objeto
-OBJS = $(SRCS:.cpp=.o)
+# Regra para gerar o executável
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
 
-# Regra para compilar o executável
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+# Regras para gerar arquivos .o a partir dos .cpp
+main.o: main.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
-# Regra para compilar arquivos objeto
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+livro.o: livro.h livro.h
+	$(CXX) $(CXXFLAGS) -c livro.cpp
 
-# Regra para limpar arquivos objeto e executáveis
+membro.o: membro.cpp membro.h
+	$(CXX) $(CXXFLAGS) -c membro.cpp
+
+Biblioteca.o: Biblioteca.cpp Biblioteca.h
+	$(CXX) $(CXXFLAGS) -c Biblioteca.cpp
+
+# Limpeza dos arquivos temporários
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET) $(OBJECTS)
+
+# Limpeza total, incluindo os arquivos de backup
+cleanall: clean
+	rm -f *~
