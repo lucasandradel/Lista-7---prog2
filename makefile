@@ -1,6 +1,6 @@
 # Variáveis de compilador e flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall
+CXXFLAGS = -std=c++11 -Wall
 
 # Diretivas de arquivos
 TARGET = main
@@ -18,7 +18,7 @@ $(TARGET): $(OBJECTS)
 main.o: main.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-livro.o: livro.h livro.h
+livro.o: livro.cpp livro.h
 	$(CXX) $(CXXFLAGS) -c livro.cpp
 
 membro.o: membro.cpp membro.h
