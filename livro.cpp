@@ -1,7 +1,9 @@
 #include "Livro.h"
 
 // Construtor com parâmetros
-Livro::Livro(const string& ISBN, const string& Titulo, const string& disponivel): ISBN(ISBN), Titulo(Titulo), disponivel(disponivel == "Emprestado") {}
+Livro::Livro(const string& ISBN, const string& Titulo, 
+const string& status): ISBN(ISBN), Titulo(Titulo), 
+disponivel(status == "Disponível") {}
 
 // Getters
 string Livro::getISBN() const {
@@ -11,6 +13,7 @@ string Livro::getISBN() const {
 string Livro::getTitulo() const {
     return Titulo;
 }
+
 
 bool Livro::isDisponivel() const {
     return disponivel;
@@ -37,4 +40,8 @@ void Livro::exibirDados() const {
     } else {
         cout << "Livro Indisponível\n";
     }
+}
+
+string Livro::getStatus() const {
+    return disponivel ? "Disponível" : "Emprestado";
 }

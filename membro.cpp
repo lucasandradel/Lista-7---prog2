@@ -12,7 +12,7 @@ string Membro::getNome() const {
     return nome;
 }
 
-vector<Livro> Membro::getLivrosEmprestados() const {
+vector<string> Membro::getLivrosISBN() const {
     return LivrosEmprestados;
 }
 
@@ -20,7 +20,19 @@ void Membro::exibirDados() const {
     cout << "ID: " << ID << "\n";
     cout << "Nome: " << nome << "\n";
     cout << "Livros Emprestados: " << LivrosEmprestados.size() << "\n";
-    for (const auto& livro : LivrosEmprestados) {
-        livro.exibirDados() ;
+    for (const auto& isbn : LivrosEmprestados) {
+        cout << "ISBN: " << isbn << "\n";  // Apenas mostra o ISBN
+    }
+}
+
+// Métodos para adicionar e remover livros
+void Membro::adicionarLivroEmprestado(const string& ISBN) {
+    LivrosEmprestados.push_back(ISBN);
+}
+
+void Membro::removerLivroEmprestado(const string& ISBN) {
+    auto it = remove(LivrosEmprestados.begin(), LivrosEmprestados.end(), ISBN);
+    if (it != LivrosEmprestados.end()) {
+        LivrosEmprestados.erase(it, LivrosEmprestados.end());
     }
 }

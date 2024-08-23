@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "Livro.h"
 
 using namespace std;
 
@@ -12,7 +11,7 @@ class Membro {
 private:
     int ID;
     string nome;
-    vector<Livro> LivrosEmprestados;
+    vector<string> LivrosEmprestados;  // Armazena apenas o ISBN dos livros emprestados
 
 public:
     // Construtor padrão
@@ -24,13 +23,12 @@ public:
     // Getters
     int getID() const;
     string getNome() const;
-    vector<Livro> getLivrosEmprestados() const;
+    vector<string> getLivrosISBN() const;
 
     // Métodos
     void exibirDados() const;
-    void adicionarLivroEmprestado(const Livro& livro);
+    void adicionarLivroEmprestado(const string& ISBN);  // Aceita o ISBN diretamente
     void removerLivroEmprestado(const string& ISBN);
-    
 };
 
 #endif // MEMBRO_H__

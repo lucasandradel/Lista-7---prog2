@@ -1,6 +1,6 @@
 # Variáveis de compilador e flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++20 -Wall
 
 # Diretivas de arquivos
 TARGET = main

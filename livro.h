@@ -17,11 +17,12 @@ public:
     Livro() = default;
 
     // Construtor com parâmetros
-    Livro(const string& ISBN, const string& Titulo, const string& disponivel);
+    Livro(const string& ISBN, const string& Titulo, const string& status);
 
     // Getters
     string getISBN() const;
     string getTitulo() const;
+    string getStatus() const;  // retornar o status como string
     bool isDisponivel() const;
 
     // Métodos
